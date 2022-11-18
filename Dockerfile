@@ -22,12 +22,12 @@ RUN mv clash-linux-amd64-v1.11.4 clash
 RUN chmod +x clash
 # 转移到 /usr/bin 使其在任意目录都可执行
 RUN mv clash /usr/local/bin/clash
+# 将配置文件复制到容器中
+COPY config/config.yaml /root/.config/clash/config.yaml
 
-# 复制 Clash 启动脚本
+# 复制 Clash 的启动、关闭和检查脚本
 COPY script/c_start.sh /usr/local/bin/c_start.sh
-# 复制 Clash 关闭脚本
 COPY script/c_stop.sh /usr/local/bin/c_stop.sh
-# 复制 Clash 检查脚本
 COPY script/c_check.sh /usr/local/bin/c_check.sh
 
 # 将启动脚本复制到容器中
@@ -35,4 +35,3 @@ COPY script/start.sh /usr/local/bin/start.sh
 
 # 启动命令
 ENTRYPOINT ["/bin/bash", "start.sh"]
-CMD [""]
