@@ -24,6 +24,7 @@ RUN chmod +x clash
 RUN mv clash /usr/local/bin/clash
 # 将配置文件复制到容器中
 COPY config/config.yaml /root/.config/clash/config.yaml
+COPY config/Country.mmdb /root/.config/clash/Country.mmdb
 
 # 复制 Clash 的启动、关闭和检查脚本
 COPY script/c_start.sh /usr/local/bin/c_start.sh
