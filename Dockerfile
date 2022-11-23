@@ -16,9 +16,9 @@ RUN yum -y install wget
 RUN yum -y install gzip
 
 # 下载并解压 Clash
-RUN wget https://github.com/Dreamacro/clash/releases/download/v1.11.4/clash-linux-amd64-v1.11.4.gz
-RUN gzip -d clash-linux-amd64-v1.11.4.gz
-RUN mv clash-linux-amd64-v1.11.4 clash
+RUN wget https://github.com/Dreamacro/clash/releases/download/v1.11.12/clash-linux-amd64-v1.11.12.gz
+RUN gzip -d clash-linux-amd64-v1.11.12.gz
+RUN mv clash-linux-amd64-v1.11.12 clash
 RUN chmod +x clash
 # 转移到 /usr/bin 使其在任意目录都可执行
 RUN mv clash /usr/local/bin/clash
