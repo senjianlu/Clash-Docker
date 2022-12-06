@@ -5,11 +5,11 @@
 while :
 do
     # 1. 检查 Clash 是否启动着，关闭了则需要重启
-    sh /usr/local/bin/c_check.sh
+    bash c_check.sh
     if [ $? -gt 0 ]; then
         echo "Clash 不在运行！进行重启......"
-        sh /usr/local/bin/c_stop.sh
-        sh /usr/local/bin/c_start.sh
+        bash c_stop.sh
+        bash c_start.sh
     else
         echo "Clash 运行中......"
     fi
