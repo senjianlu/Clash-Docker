@@ -10,7 +10,18 @@ bind-address: "*"
 mode: Rule
 
 proxies:
+  - {name: relay_node, type: trojan, server: github.com, port: 443, password: my_password }
   - {name: node, type: trojan, server: github.com, port: 443, password: my_password }
 
+proxy-groups:
+  - name: relaid_node
+    type: relay
+    proxies:
+      - relay_node
+      - node
+
 rules:
+  # 直连模式
   - MATCH,node
+  # 转发模式
+  - MATCH,relaid_node
