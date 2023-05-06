@@ -18,15 +18,12 @@ jobs:
       # 3. 为构建镜像做准备
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-        with:
-          driver-opts: image=moby/buildkit:buildx-stable-1
       # 4. 构建镜像、打标签并发布
       - name: Build
         uses: docker/build-push-action@v2
         with:
           push: true
-          # tags: ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
-          tags: harbor.stapi.cn/proxy-pool/clash:${{ github.sha }}
+          tags: ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
       # 5. 展示现有镜像
       - name: Images
         run: docker images
