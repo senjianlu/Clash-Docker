@@ -3,7 +3,7 @@ name: CI to Harbor Docker Hub
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
   build:
