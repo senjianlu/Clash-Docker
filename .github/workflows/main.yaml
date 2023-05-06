@@ -24,12 +24,15 @@ jobs:
       # 4. 登录 Harbor Docker Hub
       - name: Login
         run: docker login -u ${{ secrets.HARBOR_USERNAME }} -p ${{ secrets.HARBOR_PASSWORD }} ${{ secrets.HARBOR_HOST }}
-      # 5. 推送镜像
+      # 5. 展示现有镜像
+      - name: Images
+        run: docker images
+      # 6. 推送镜像
       - name: Push
         run: docker push ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
-      # 6. 提供镜像的下载地址
+      # 7. 提供镜像的下载地址
       - name: Echo
         run: echo ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
-      # 7. 完成
+      # 8. 完成
       - name: Done
         run: echo "Done"

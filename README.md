@@ -3,7 +3,7 @@
 
 ## 构建
 ```bash
-docker build -t rabbir/clash:latest . --no-cache
+docker build -t harbor.stapi.cn/proxy-pool/clash:latest . --no-cache
 ```
 
 ## 启动
@@ -15,7 +15,7 @@ docker run -d --restart always \
   -e RAB_CLASH_RELAY_NODE_INFO="{name: relay_node, type: trojan, server: github.com, port: 443, password: my_password }" \
   -e RAB_CLASH_NODE_INFO="{name: node, type: trojan, server: github.com, port: 443, password: my_password }" \
   --name clash \
-  rabbir/clash2proxy:latest
+  harbor.stapi.cn/proxy-pool/clash:latest
 ```
 > **注意：** 节点 `name` 字段的值一定要为 `relay_node` 和 `node`。
 
