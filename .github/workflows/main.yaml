@@ -26,10 +26,10 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/clash:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USERNAME }}/clash:latest
       # 5. 提供镜像的下载地址
       - name: Echo
-        run: echo ${{ secrets.DOCKER_USERNAME }}/clash:${{ github.sha }}
+        run: echo ${{ secrets.DOCKER_USERNAME }}/clash:latest
       # 7. 完成
       - name: Done
         run: echo "Done"
