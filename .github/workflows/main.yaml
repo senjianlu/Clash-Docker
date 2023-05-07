@@ -1,5 +1,5 @@
-# 将项目构建镜像并发布至 Harbor Docker hub
-name: CI to Harbor Docker Hub
+# 将项目构建镜像并发布至 Docker hub
+name: CI to Docker Hub
 
 on:
   push:
@@ -12,24 +12,24 @@ jobs:
       # 1. 检出代码
       - name: Checkout
         uses: actions/checkout@v2
-      # 2. 登录 Harbor Docker Hub
+      # 2. 登录 Docker Hub 使用 Access Token
       - name: Login
-        run: docker login -u ${{ secrets.HARBOR_USERNAME }} -p ${{ secrets.HARBOR_PASSWORD }} ${{ secrets.HARBOR_HOST }}
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
       # 3. 为构建镜像做准备
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       # 4. 构建镜像、打标签并发布
-      - name: Build
+      - name: Build and push
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
-      # 5. 展示现有镜像
-      - name: Images
-        run: docker images
-      # 6. 提供镜像的下载地址
+          tags: ${{ secrets.DOCKER_USERNAME }}/clash:${{ github.sha }}
+      # 5. 提供镜像的下载地址
       - name: Echo
-        run: echo ${{ secrets.HARBOR_HOST }}/${{ secrets.HARBOR_PROJECT }}/${{ secrets.HARBOR_IMAGE }}:${{ github.sha }}
+        run: echo ${{ secrets.DOCKER_USERNAME }}/clash:${{ github.sha }}
       # 7. 完成
       - name: Done
         run: echo "Done"
