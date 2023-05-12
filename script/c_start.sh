@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. 设置代理认证信息和节点信息
-sed -i "6c \ \ - \"$RAB_SOCKS5_USERNAME:$RAB_SOCKS5_PASSWORD\"" /root/.config/clash/config.yaml
+sed -i "6c \ \ - \"$RAB_PROXY_USERNAME:$RAB_PROXY_PASSWORD\"" /root/.config/clash/config.yaml
 
 # 2. 如果存在 RAB_CLASH_RELAY_NODE_INFO 环境变量，就替换第 13 行的节点信息，否则注释第 13 行
 if [ -n "$RAB_CLASH_RELAY_NODE_INFO" ]; then

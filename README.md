@@ -10,8 +10,8 @@ docker build -t rabbir/clash:latest . --no-cache
 ```bash
 docker run -d --restart always \
   -p 1080:7893 \
-  -e RAB_SOCKS5_USERNAME=test \
-  -e RAB_SOCKS5_PASSWORD=test \
+  -e RAB_PROXY_USERNAME=test \
+  -e RAB_PROXY_PASSWORD=test \
   -e RAB_CLASH_RELAY_NODE_INFO="{name: relay_node, type: trojan, server: github.com, port: 443, password: my_password }" \
   -e RAB_CLASH_NODE_INFO="{name: node, type: trojan, server: github.com, port: 443, password: my_password }" \
   --name clash \
