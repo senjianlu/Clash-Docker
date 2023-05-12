@@ -20,7 +20,7 @@ if [ -n "$RAB_CLASH_RELAY_NODE_INFO" ]; then
     sed -i '25c \ \ # - MATCH,node' /root/.config/clash/config.yaml
 else
     # 在第 20 行前面加上 # 注释掉
-    sed -i '20 \ \ # - relay_node' /root/.config/clash/config.yaml
+    sed -i '20c \ \ # - relay_node' /root/.config/clash/config.yaml
     # 在第 27 行前面加上 # 注释掉
     sed -i '27c \ \ # - MATCH,relaid_node' /root/.config/clash/config.yaml
 fi
