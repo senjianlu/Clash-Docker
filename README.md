@@ -1,4 +1,4 @@
-# Clash-docker
+# Clash-Docker
 内置 Clash 的 Docker 镜像构建脚本。  
 基于 [`dreamacro/clash`](https://hub.docker.com/r/dreamacro/clash) 镜像构建，添加了 `tzdata` 时区支持。
 
